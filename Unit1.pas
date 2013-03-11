@@ -23,7 +23,7 @@ public
 end;
 
 Const
-BukvKirSTR: set of char = ['А'..'Е','ё','Ж'..'Я','а'..'я','Ё'];
+BukvKirSTR: set of char = ['пїЅ'..'пїЅ','пїЅ','пїЅ'..'пїЅ','пїЅ'..'пїЅ','пїЅ'];
 BukvLat: set of char =['A'..'Z','a'..'z'];
 BukvLatm: set of char = ['a'..'z'];
 Prob: set of char = [' '];
@@ -37,8 +37,8 @@ implementation
 
 Function Prov(const s: string): byte;
 Var
-Nom: byte; // номер аномалии
-i,Len: word; // текущий символ и длина строки
+Nom: byte; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+i,Len: word; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 Begin
 Nom:=0; len:= Length(S);
 If Len=0 then Nom:=1
@@ -56,9 +56,9 @@ End;
 
 Procedure Sort(var s:string);
 Var 
-i, z, len: Word; // номер текущего символа, номер итерации (шага), длина строки
-flag: Boolean; // упорядочено? (нет обменов?)
-ch: char; // для обмена
+i, z, len: Word; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅ), пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+flag: Boolean; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ? (пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ?)
+ch: char; // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 Begin
 Z:=1; len:=length(s);
 Repeat
@@ -69,9 +69,9 @@ if (s[i] in BukvLat) and ((s[i+1] in BukvKirSTR) or
 and (s[i+1] in Prob) or
 (s[i] in BukvLat) and (s[i+1] in BukvLat)
 and (ansiuppercase(s[i])>ansiuppercase(s[i+1]))
-or (s[i] in BukvLatm) and (s[i+1] in BukvLatb) and (ansiuppercase(s[i])>s[i+1])
+or (s[i] in BukvLatm) and (s[i+1] in BukvLatb) and (ansiuppercase(s[i])=s[i+1])
 then
-begin // обмен
+begin // пїЅпїЅпїЅпїЅпїЅ
 ch:=s[i]; s[i]:=s[i+1]; s[i+1]:=ch; flag:= false;
 
 end;
@@ -83,16 +83,16 @@ procedure TForm1.Button1Click(Sender: TObject);
 var
 s: string; Nom: byte;
 begin
-s:=Edit1.Text; // ввод строки S
-// проверка
+s:=Edit1.Text; // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ S
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 Nom:= Prov(s);
 Case Nom of
-1: Label2.Caption := 'Пустая строка';
-2: Label2.Caption := 'Некорректные символы';
+1: Label2.Caption := 'пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ';
+2: Label2.Caption := 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ';
 else
-begin // сортировка
+begin // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 Sort(s);
-Label2.Caption:='"'+s+'"'; // вывод строки S
+Label2.Caption:='"'+s+'"'; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ S
 end; {else}
 end;
 end;
