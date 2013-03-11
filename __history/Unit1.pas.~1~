@@ -69,7 +69,7 @@ if (s[i] in BukvLat) and ((s[i+1] in BukvKirSTR) or
 and (s[i+1] in Prob) or
 (s[i] in BukvLat) and (s[i+1] in BukvLat)
 and (ansiuppercase(s[i])>ansiuppercase(s[i+1]))
-or (s[i] in BukvLatm) and (s[i+1] in BukvLatb) and (ansiuppercase(s[i])=s[i+1])
+or (s[i] in BukvLatm) and (s[i+1] in BukvLatb) and (ansiuppercase(s[i])>s[i+1])
 then
 begin // ξαμεν
 ch:=s[i]; s[i]:=s[i+1]; s[i+1]:=ch; flag:= false;
